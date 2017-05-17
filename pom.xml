@@ -12,35 +12,58 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <springloaded.version>1.2.4.RELEASE</springloaded.version>
         <springframework.version>4.0.7.RELEASE</springframework.version>
-        <mybatis.version>3.2.3</mybatis.version>
+        <mybatis.version>3.2.8</mybatis.version>
         <mybatis-spring.version>1.2.2</mybatis-spring.version>
+        <mybatis-spring-boot.version>1.1.1</mybatis-spring-boot.version>
+        <tomcat.version>8.5.5</tomcat.version>
         <mysql.version>5.1.31</mysql.version>
         <druid.version>0.2.20</druid.version>
         <springboot.version>1.2.3.RELEASE</springboot.version>
+        <log4j.version>1.2.17</log4j.version>
+        <slf4j.version>1.7.7</slf4j.version>
+        <fastJson.version>1.1.43</fastJson.version>
     </properties>
 
+    <repositories>
+        <repository>
+            <id>nexus</id>
+            <url>http://192.168.1.180:8081/nexus/content/repositories/thirdparty/</url>
+            <layout>default</layout>
+        </repository>
+        <repository>
+            <id>spring-milestone</id>
+            <url>https://repo.spring.io/libs-release</url>
+        </repository>
+    </repositories>
+
     <dependencies>
+        <!--Spring Boot-->
+        <!--支持 Web 应用开发，包含 Tomcat 和 spring-mvc。 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
             <version>${springboot.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-            <version>${springboot.version}</version>
-        </dependency>
+        <!--模板引擎-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
             <version>${springboot.version}</version>
         </dependency>
+        <!--支持使用 JDBC 访问数据库-->
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-jdbc</artifactId>
-            <version>${springframework.version}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+            <version>${springboot.version}</version>
+        </dependency>
+        <!--添加适用于生产环境的功能，如性能指标和监测等功能。 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+            <version>${springboot.version}</version>
         </dependency>
 
+        <!--Mybatis-->
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
@@ -51,23 +74,33 @@
             <artifactId>mybatis-spring</artifactId>
             <version>${mybatis-spring.version}</version>
         </dependency>
+        <!--Mysql / DataSource-->
         <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid</artifactId>
-            <version>${druid.version}</version>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-jdbc</artifactId>
+            <version>${tomcat.version}</version>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>${druid.version}</version>
+        </dependency>
+        <!--Json Support-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastJson.version}</version>
+        </dependency>
+        <!--Log Support-->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
     </dependencies>
-
-    <repositories>
-        <repository>
-            <id>nexus</id>
-            <url>http://192.168.1.180:8081/nexus/content/repositories/thirdparty/</url>
-            <layout>default</layout>
-        </repository>
-    </repositories>
 </project>
