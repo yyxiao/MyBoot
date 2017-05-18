@@ -38,7 +38,8 @@ public class LoginHandler implements HandlerInterceptor {
             httpServletResponse.sendRedirect("/login.htm");
             return false;
         }else {
-            return true;
+            return false;
+
         }
     }
 

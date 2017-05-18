@@ -1,18 +1,30 @@
 package mapper;
 
+import model.City;
+import model.CityExample;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
-import entity.City;
-
-/**
- * CityMapper
- * mapper
- *
- * @author xiaoyy
- * @Date 2017-05-17 上午10:09
- * The word 'impossible' is not in my dictionary.
- */
 public interface CityMapper {
+    int countByExample(CityExample example);
 
-    public City findCityInfo();
+    int deleteByExample(CityExample example);
 
+    int deleteByPrimaryKey(String code);
+
+    int insert(City record);
+
+    int insertSelective(City record);
+
+    List<City> selectByExample(CityExample example);
+
+    City selectByPrimaryKey(String code);
+
+    int updateByExampleSelective(@Param("record") City record, @Param("example") CityExample example);
+
+    int updateByExample(@Param("record") City record, @Param("example") CityExample example);
+
+    int updateByPrimaryKeySelective(City record);
+
+    int updateByPrimaryKey(City record);
 }
