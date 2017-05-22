@@ -48,17 +48,5 @@
         </javaClientGenerator>
         <!-- 指定数据库表 要生成哪些表-->
         <table tableName="city"></table>
-        <!--<table schema="general" tableName="city" domainObjectName="City"-->
-        <!--enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
-        <!--enableSelectByExample="false" selectByExampleQueryId="false" >-->
-        <!--<property name="useActualColumnNames" value="true"/>-->
-        <!--</table>-->
-        <!--<table schema="general" tableName="t_pro_supplier_material" domainObjectName="ProSupplierMaterial">-->
-        <!--</table>-->
-
-        <!-- 有些表的字段需要指定java类型
-         <table schema="" tableName="">
-            <columnOverride column="" javaType="" />
-        </table> -->
     </context>
 </generatorConfiguration>

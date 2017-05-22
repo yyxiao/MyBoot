@@ -1,3 +1,5 @@
+package com.xyy;
+
 import org.apache.log4j.Logger;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
@@ -14,7 +16,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 
 @SpringBootApplication
-@MapperScan("mapper")
+@MapperScan("com/xyy/mapper")
 public class Application {
     private static Logger logger = Logger.getLogger(Application.class);
 

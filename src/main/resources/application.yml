@@ -32,7 +32,6 @@ datasource:
       maxPoolPreparedStatementPerConnectionSize: 20
 logging:
   config: classpath:logback.xml
-#     file: /data/logs/myBoot/boot.log
 
 #server:
 #  port: 8080

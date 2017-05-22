@@ -1,6 +1,7 @@
-package service;
+package com.xyy.service;
 
-import entity.City;
+
+import com.xyy.model.City;
 
 /**
  * CityService

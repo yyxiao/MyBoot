@@ -1,4 +1,4 @@
-package utils;
+package com.xyy.utils;
 
 /**
  * BootConstants

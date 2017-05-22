@@ -1,4 +1,4 @@
-package model;
+package com.xyy.model;
 
 public class City {
     private String code;

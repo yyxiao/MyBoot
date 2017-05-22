@@ -1,7 +1,7 @@
-package mapper;
+package com.xyy.mapper;
 
-import model.City;
-import model.CityExample;
+import com.xyy.model.City;
+import com.xyy.model.CityExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

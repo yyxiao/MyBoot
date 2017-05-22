@@ -1,7 +1,7 @@
-package mybatis;
+package com.xyy.mybatis;
 
 import com.alibaba.druid.pool.DruidDataSource;
-import org.apache.log4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.bind.RelaxedPropertyResolver;
 import org.springframework.context.EnvironmentAware;
 import org.springframework.context.annotation.Bean;
@@ -28,7 +28,7 @@ import java.util.List;
 @EnableTransactionManagement
 public class DataBaseConfig implements EnvironmentAware {
 
-    private static Logger log = Logger.getLogger(DataBaseConfig.class);
+    private org.slf4j.Logger logger = LoggerFactory.getLogger(DataBaseConfig.class);
 
     /*
     Spring Boot支持从多个地方加载配置，比如命令行、系统环境变量、JNDI等，因此配置项的语法支持所谓的RelaxedEnvironment。
@@ -43,7 +43,7 @@ public class DataBaseConfig implements EnvironmentAware {
     @Bean(name = "writeDataSource", destroyMethod = "close", initMethod = "init")
     @Primary
     public DataSource writeDataSource() {
-        log.debug("Configruing Write DataSource");
+        logger.debug("Configruing Write DataSource");
 
         DruidDataSource dataSource = new DruidDataSource();
         dataSource.setUrl(propertyResolver.getProperty("mysql.url"));
@@ -56,7 +56,7 @@ public class DataBaseConfig implements EnvironmentAware {
 
     @Bean(name = "readOneDataSource", destroyMethod = "close", initMethod = "init")
     public DataSource readOneDataSource() {
-        log.debug("Configruing Read One DataSource");
+        logger.debug("Configruing Read One DataSource");
 
         DruidDataSource datasource = new DruidDataSource();
         datasource.setUrl(propertyResolver.getProperty("url"));
@@ -69,7 +69,7 @@ public class DataBaseConfig implements EnvironmentAware {
 
     @Bean(name = "readTowDataSource", destroyMethod = "close", initMethod = "init")
     public DataSource readTowDataSource() {
-        log.debug("Configruing Read Two DataSource");
+        logger.debug("Configruing Read Two DataSource");
 
         DruidDataSource datasource = new DruidDataSource();
         datasource.setUrl(propertyResolver.getProperty("url"));

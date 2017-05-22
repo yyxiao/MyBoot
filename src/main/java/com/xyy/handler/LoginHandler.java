@@ -1,9 +1,8 @@
-package handler;
+package com.xyy.handler;
 
-import org.apache.naming.Constants;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
-import utils.BootConstants;
+import com.xyy.utils.BootConstants;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

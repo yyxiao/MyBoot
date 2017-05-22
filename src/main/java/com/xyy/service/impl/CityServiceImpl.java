@@ -1,9 +1,9 @@
-package service.impl;
+package com.xyy.service.impl;
 
-import entity.City;
-import mapper.CityMapper;
+import com.xyy.mapper.CityMapper;
+import com.xyy.model.City;
 import org.springframework.stereotype.Service;
-import service.CityService;
+import com.xyy.service.CityService;
 
 /**
  * CityServiceImpl
@@ -19,7 +19,7 @@ public class CityServiceImpl implements CityService {
     private CityMapper cityMapper;
 
     public City getCityInfo(String code) {
-        City city = cityMapper.findCityInfo(code);
+        City city = cityMapper.selectByPrimaryKey(code);
         return city != null ? city : new City();
     }
 }
