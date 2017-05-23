@@ -1,13 +1,12 @@
 package com.xyy.controller;
 
 import com.xyy.model.City;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.xyy.service.CityService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.xyy.service.CityService;
 
 /**
  * CityController
@@ -23,7 +22,7 @@ public class CityController {
     @Autowired
     private CityService cityService;
 
-    private Logger logger = LoggerFactory.getLogger(CityController.class);
+    private Logger logger = Logger.getLogger(CityController.class);
 
     @RequestMapping("/getCityInfo")
     @ResponseBody

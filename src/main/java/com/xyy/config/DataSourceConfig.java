@@ -25,10 +25,10 @@ public class DataSourceConfig {
     @Bean(name="dataSource")
     public DruidDataSource dataSource() throws PropertyVetoException {
         DruidDataSource dataSource = new DruidDataSource();
-        dataSource.setDriverClassName(env.getProperty("ms.db.driverClassName"));
-        dataSource.setUrl(env.getProperty("ms.db.url"));
-        dataSource.setUsername(env.getProperty("ms.db.username"));
-        dataSource.setPassword(env.getProperty("ms.db.password"));
+        dataSource.setDriverClassName(env.getProperty("db.driverClassName"));
+        dataSource.setUrl(env.getProperty("db.url"));
+        dataSource.setUsername(env.getProperty("db.username"));
+        dataSource.setPassword(env.getProperty("db.password"));
         return dataSource;
     }
 }

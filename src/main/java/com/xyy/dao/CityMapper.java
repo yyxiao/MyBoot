@@ -1,4 +1,4 @@
-package com.xyy.mapper;
+package com.xyy.dao;
 
 import com.xyy.model.City;
 import com.xyy.model.CityExample;
