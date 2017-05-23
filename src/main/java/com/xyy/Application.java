@@ -4,6 +4,7 @@ import org.apache.log4j.Logger;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
 /**
  * Application
@@ -14,9 +15,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @Date 2017-05-17 上午10:39
  * The word 'impossible' is not in my dictionary.
  */
-
+@ComponentScan(basePackages ="com.xyy")
 @SpringBootApplication
-@MapperScan("com/xyy/mapper")
 public class Application {
     private static Logger logger = Logger.getLogger(Application.class);
 
