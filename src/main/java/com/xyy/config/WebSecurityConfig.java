@@ -2,6 +2,7 @@ package com.xyy.config;
 
 import com.xyy.service.CityService;
 import com.xyy.service.impl.CityServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -23,7 +24,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
 
     @Bean
-    CityService cityService(){ //注册UserDetailsService 的bean
+    CityService cityService(){ //注册cityService 的bean
         return new CityServiceImpl();
     }
 
@@ -33,12 +34,16 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated() //任何请求,登录后可以访问
                 .and()
                 .formLogin()
-                .loginPage("/getCityInfo")
+//                .loginPage("/hello")
                 .failureUrl("/login?error")
                 .permitAll() //登录页面用户任意访问
                 .and()
                 .logout().permitAll(); //注销行为任意访问
+    }
 
-
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth.inMemoryAuthentication()
+                .withUser("admin").password("123456").roles("USER");
     }
 }
