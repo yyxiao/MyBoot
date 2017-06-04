@@ -23,7 +23,6 @@ public class CityServiceImpl implements CityService {
     public City getCityInfo(String code) {
         City city = cityMapper.findCityInfo(code);
 //        City city = new City();
-        city.setName("sdfdsf");
         return city != null ? city : new City();
     }
 }

@@ -35,6 +35,33 @@ import java.beans.PropertyVetoException;
 @MapperScan("com.xyy.mapper")
 public class Application {
     private static Logger logger = Logger.getLogger(Application.class);
+    @Autowired
+    private Environment env;
+
+    @Bean(name="dataSource")
+    public DruidDataSource dataSource() throws PropertyVetoException {
+        DruidDataSource dataSource = new DruidDataSource();
+        dataSource.setDriverClassName(env.getProperty("db.driverClassName"));
+        dataSource.setUrl(env.getProperty("db.url"));
+        dataSource.setUsername(env.getProperty("db.username"));
+        dataSource.setPassword(env.getProperty("db.password"));
+        String a = env.getProperty("db.password");
+        System.out.println(a);
+        return dataSource;
+    }
+    @Bean
+    public SqlSessionFactory sqlSessionFactoryBean() throws Exception {
+        SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
+        sqlSessionFactoryBean.setDataSource(dataSource());
+        PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
+        sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath*:mapper/*.xml"));
+        return sqlSessionFactoryBean.getObject();
+    }
+
+    @Bean(name = "transactionManager")
+    public PlatformTransactionManager annotationDrivenTransactionManager() throws PropertyVetoException{
+        return new DataSourceTransactionManager(dataSource());
+    }
 
     /**
      * Main Start

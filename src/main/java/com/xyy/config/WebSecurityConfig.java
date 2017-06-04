@@ -23,10 +23,10 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
 
-    @Bean
-    CityService cityService(){ //注册cityService 的bean
-        return new CityServiceImpl();
-    }
+//    @Bean
+//    CityService cityService(){ //注册cityService 的bean
+//        return new CityServiceImpl();
+//    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
