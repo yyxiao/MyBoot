@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Map;
+
 /**
  * HelloController
  * com.xyy.controller
@@ -25,10 +27,10 @@ public class HelloController {
      */
 
     @RequestMapping("/hello")
-    @ResponseBody
-    public String greeting(@RequestParam(value="name", required=false, defaultValue="World") String name) {
+    public String greeting(Map<String,Object> map) {
         logger.info("hello");
-        String test = name;
-        return test;
+        map.put("hello","from TemplateController.test");
+        // 返回templates中test.html
+        return "test";
     }
 }
