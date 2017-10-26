@@ -9,7 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.env.Environment;
@@ -17,7 +18,6 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 
-import javax.activation.DataSource;
 import java.beans.PropertyVetoException;
 
 /**
@@ -33,8 +33,8 @@ import java.beans.PropertyVetoException;
 @SpringBootApplication
 @ComponentScan
 @MapperScan("com.xyy.mapper")
-public class Application {
-    private static Logger logger = Logger.getLogger(Application.class);
+public class Application extends SpringBootServletInitializer{
+    private static Logger logger1 = Logger.getLogger(Application.class);
     @Autowired
     private Environment env;
 
@@ -63,12 +63,25 @@ public class Application {
         return new DataSourceTransactionManager(dataSource());
     }
 
+
+    /**
+     * 重写configure，相当于web.xml加载main
+     * @Description @TODO
+     * @author Xander
+     * @Date 2017/10/26 下午3:43
+     * The word 'impossible' is not in my dictionary.
+     */
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(Application.class);
+    }
+
     /**
      * Main Start
      */
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
-        logger.info("============= SpringBoot Start Success =============");
+        logger1.info("============= SpringBoot Start Success =============");
     }
 
 }

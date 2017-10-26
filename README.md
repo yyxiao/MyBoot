@@ -12,3 +12,4 @@ classpath:/static/index.html
 calsspath:/public/index.html
 ~~~
 
+mybatis ORM逆向生成实体 generatorConfig.xml
