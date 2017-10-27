@@ -11,12 +11,12 @@ import java.util.concurrent.locks.ReentrantLock;
  * @Date 2017-05-15 下午2:31
  * The word 'impossible' is not in my dictionary.
  */
-public class LockTest {
+public class LockDemo {
     private ArrayList<Integer> arrayList = new ArrayList<Integer>();
     private Lock lock = new ReentrantLock();  // 注意这个地方:lock被声明为成员变量
 
     public static void main(String[] args) {
-        final LockTest test = new LockTest();
+        final LockDemo test = new LockDemo();
 
         new Thread("A") {
             public void run() {

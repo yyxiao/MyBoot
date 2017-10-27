@@ -9,7 +9,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * @Date 2017-05-11 上午9:53
  * The word 'impossible' is not in my dictionary.
  */
-public class ReentrantLockTest {
+public class ReentrantLockDemo {
 
     private static class Counter {
 

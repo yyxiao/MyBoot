@@ -1,5 +1,7 @@
 # MyBoot
 
+更换springBoot版本1.5.8.RELEASE
+
 * 项目静态文件目录：/src/java/resources/static
 * 项目模板文件目录：/src/java/resources/templates
 

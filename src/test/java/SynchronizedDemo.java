@@ -10,7 +10,7 @@ import java.util.List;
  * @Date 2017-05-09 下午1:37
  * The word 'impossible' is not in my dictionary.
  */
-public class SynchronizedTest {
+public class SynchronizedDemo {
     public static void main(String[] args) {
         List list = new LinkedList();
         Thread r = new Thread(new ReadList(list));

@@ -65,8 +65,7 @@ public class Application extends SpringBootServletInitializer{
 
 
     /**
-     * 重写configure，相当于web.xml加载main
-     * @Description @TODO
+     * @Description 重写configure，相当于web.xml加载main
      * @author Xander
      * @Date 2017/10/26 下午3:43
      * The word 'impossible' is not in my dictionary.
