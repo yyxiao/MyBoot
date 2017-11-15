@@ -1,3 +1,4 @@
+import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
 /**
@@ -12,6 +13,8 @@ import java.text.NumberFormat;
 public class NumberFormatDemo {
 
     public static void main(String[] args) {
+
+        //例一：
         // 待测试数据
         int i = 1;
         // 得到一个NumberFormat的实例
@@ -23,6 +26,26 @@ public class NumberFormatDemo {
         // 设置最小整数位数
         nf.setMinimumIntegerDigits(4);
         // 输出测试语句
-        System.out.println(nf.format(i));
+        System.out.println("first :" + nf.format(i));
+
+        //例二：
+        int youNumber = 1;
+        // 0 代表前面补充0
+        // 4 代表长度为4
+        // d 代表参数为正数型
+        String str = String.format("%04d", youNumber);
+        System.out.println("second :" + str); // 0001
+
+        //例三：
+        //流水号加1后返回，流水号长度为4
+        String STR_FORMAT = "0000";
+
+        Integer intHao = Integer.parseInt("0");
+        intHao++;
+        DecimalFormat df = new DecimalFormat(STR_FORMAT);
+        System.out.println("third :" + df.format(intHao)); // 0001
     }
+
+
+
 }

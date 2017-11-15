@@ -1,6 +1,7 @@
 package com.xyy;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.log4j.Logger;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -11,12 +12,15 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.env.Environment;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.beans.PropertyVetoException;
 
@@ -29,6 +33,7 @@ import java.beans.PropertyVetoException;
  * @Date 2017-05-17 上午10:39
  * The word 'impossible' is not in my dictionary.
  */
+@EnableDiscoveryClient
 @EnableAutoConfiguration
 @SpringBootApplication
 @ComponentScan
@@ -70,17 +75,32 @@ public class Application extends SpringBootServletInitializer{
      * @Date 2017/10/26 下午3:43
      * The word 'impossible' is not in my dictionary.
      */
-    @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(Application.class);
-    }
+//    @Override
+//    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+//        return application.sources(Application.class);
+//    }
 
     /**
      * Main Start
      */
     public static void main(String[] args) {
+//        new SpringApplicationBuilder(Application.class).web(true).run(args);
         SpringApplication.run(Application.class, args);
         logger1.info("============= SpringBoot Start Success =============");
     }
 
+
+    /**
+     * 捕获类内所有的异常
+     * @param ex
+     * @return
+     */
+    @ExceptionHandler
+    public ModelAndView exceptionHandelByThymeleaf(Exception ex, HttpServletRequest req){
+        ModelAndView mav=new ModelAndView();
+        mav.setViewName("error");
+        mav.addObject("exception", ex);
+        mav.addObject("url", req.getRequestURL());
+        return mav;
+    }
 }
