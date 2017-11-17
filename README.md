@@ -23,3 +23,8 @@ calsspath:/public/index.html
 ~~~
 
 mybatis ORM逆向生成实体 generatorConfig.xml
+
+# MyBoot-zuul(2017-11-17)
+
+使用zuul过滤接口访问时，需去除provider中的WebSecurityConfig与pom中spring-boot-starter-security，不过建议在接口应用中不要添加
+security，本环境provider因为是web中集成了provider故得进行修改。

@@ -1,0 +1,40 @@
+# IntelliJ project files
+.idea/
+*.iml
+*.ipr
+*.iws
+*.idea
+
+# Eclipse Project Files
+.classpath
+.project
+.settings/
+*.class
+.metadata/
+.classes/
+
+
+# Build Artifacts
+.gradle/
+build
+target/
+out/
+bin
+
+# Operating System Files
+*.DS_Store
+Thumbs.db
+*.sw?
+.#*
+*#
+*~
+*.sublime-*
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+rebel.xml
