@@ -16,6 +16,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class Scheduler {
+
     private final Logger logger = Logger.getLogger(this.getClass());
 
     @Scheduled(cron="0 0/1 * * * ?") //每分钟执行一次
