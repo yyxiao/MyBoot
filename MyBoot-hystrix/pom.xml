@@ -29,6 +29,7 @@
             <artifactId>hystrix-core</artifactId>
         </dependency>
 
+        <!-- 断路器仪表盘 -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-hystrix-dashboard</artifactId>
