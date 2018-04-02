@@ -2,7 +2,7 @@
 <!DOCTYPE generatorConfiguration
         PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
-
+<!--mybatis生成数据库表相关实体类、mapper-->
 <generatorConfiguration>
     <classPathEntry
             location="/Users/xiaoyy/.m2/repository/mysql/mysql-connector-java/5.1.30/mysql-connector-java-5.1.30.jar"/>
@@ -47,6 +47,6 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
         <!-- 指定数据库表 要生成哪些表-->
-        <table tableName="city"></table>
+        <!--<table tableName="AAA_LOGIN_FTP_LOG"></table>-->
     </context>
 </generatorConfiguration>

@@ -1,4 +1,4 @@
-package com.xyy;
+package com.xyy.controller;
 
 import org.apache.log4j.Logger;
 import org.slf4j.LoggerFactory;
