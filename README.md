@@ -36,3 +36,5 @@ security，本环境provider因为是web中集成了provider故得进行修改�
 # MyBoot-hystrix(2018-04-02)
 熔断器监控，调用测试搭建，具体调用后期补入
 http://127.0.0.1:8101/hystrix
+调用熔断器仪表盘 查看接口熔断情况
+http://localhost:8101/hystrix/monitor?stream=http://localhost:9000/hystrix.stream
