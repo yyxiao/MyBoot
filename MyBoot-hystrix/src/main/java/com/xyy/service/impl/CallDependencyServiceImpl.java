@@ -3,6 +3,7 @@ package com.xyy.service.impl;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.xyy.service.CallDependencyService;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.Random;
 
@@ -15,6 +16,7 @@ import java.util.Random;
  * The word 'impossible' is not in my dictionary.
  */
 @Component
+@Service
 public class CallDependencyServiceImpl implements CallDependencyService{
 
     private Random random = new Random();

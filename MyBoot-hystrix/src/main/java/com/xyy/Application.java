@@ -28,7 +28,7 @@ public class Application {
 //        return "forward:/hystrix";
 //    }
     public static void main(String[] args) {
-        new SpringApplicationBuilder(Application.class).properties("server.port=8082").run(args);
+        new SpringApplicationBuilder(Application.class).web(true).run(args);
     }
 
 }
