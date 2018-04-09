@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.springmvc.dao.AaaLoginFtpLogMapper" >
+  <resultMap id="BaseResultMap" type="cn.springmvc.model.AaaLoginFtpLog" >
+    <id column="AAA_LOGIN_FTP_LOG_ID" property="aaaLoginFtpLogId" jdbcType="VARCHAR" />
+    <result column="CHARGE_TPYE" property="chargeTpye" jdbcType="VARCHAR" />
+    <result column="ACCESS_TYPE" property="accessType" jdbcType="VARCHAR" />
+    <result column="BELONG_NET" property="belongNet" jdbcType="VARCHAR" />
+    <result column="VISIT_NET" property="visitNet" jdbcType="VARCHAR" />
+    <result column="TICKET_SOURCE" property="ticketSource" jdbcType="VARCHAR" />
+    <result column="INITIAL_SOURCE" property="initialSource" jdbcType="VARCHAR" />
+    <result column="ACCOUNT" property="account" jdbcType="VARCHAR" />
+    <result column="ACCESS_DESC" property="accessDesc" jdbcType="VARCHAR" />
+    <result column="ACCESS_ADD" property="accessAdd" jdbcType="VARCHAR" />
+    <result column="ACCESS_SIGN" property="accessSign" jdbcType="VARCHAR" />
+    <result column="SESSION_ID" property="sessionId" jdbcType="VARCHAR" />
+    <result column="APP_IP" property="appIp" jdbcType="VARCHAR" />
+    <result column="CALLING_NO" property="callingNo" jdbcType="VARCHAR" />
+    <result column="MAC_NUM" property="macNum" jdbcType="VARCHAR" />
+    <result column="CALLED_NO" property="calledNo" jdbcType="VARCHAR" />
+    <result column="START_TIME" property="startTime" jdbcType="VARCHAR" />
+    <result column="END_TIME" property="endTime" jdbcType="VARCHAR" />
+    <result column="CALL_TIME" property="callTime" jdbcType="DECIMAL" />
+    <result column="IN_DISCHARGE" property="inDischarge" jdbcType="VARCHAR" />
+    <result column="OUT_DISCHARGE" property="outDischarge" jdbcType="VARCHAR" />
+    <result column="ALL_DISCHARGE" property="allDischarge" jdbcType="VARCHAR" />
+    <result column="COUNTRY" property="country" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    AAA_LOGIN_FTP_LOG_ID, CHARGE_TPYE, ACCESS_TYPE, BELONG_NET, VISIT_NET, TICKET_SOURCE, 
+    INITIAL_SOURCE, ACCOUNT, ACCESS_DESC, ACCESS_ADD, ACCESS_SIGN, SESSION_ID, APP_IP, 
+    CALLING_NO, MAC_NUM, CALLED_NO, START_TIME, END_TIME, CALL_TIME, IN_DISCHARGE, OUT_DISCHARGE, 
+    ALL_DISCHARGE, COUNTRY
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.springmvc.model.AaaLoginFtpLogExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from AAA_LOGIN_FTP_LOG
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from AAA_LOGIN_FTP_LOG
+    where AAA_LOGIN_FTP_LOG_ID = #{aaaLoginFtpLogId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from AAA_LOGIN_FTP_LOG
+    where AAA_LOGIN_FTP_LOG_ID = #{aaaLoginFtpLogId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="cn.springmvc.model.AaaLoginFtpLogExample" >
+    delete from AAA_LOGIN_FTP_LOG
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="cn.springmvc.model.AaaLoginFtpLog" >
+    insert into AAA_LOGIN_FTP_LOG (AAA_LOGIN_FTP_LOG_ID, CHARGE_TPYE, ACCESS_TYPE, 
+      BELONG_NET, VISIT_NET, TICKET_SOURCE, 
+      INITIAL_SOURCE, ACCOUNT, ACCESS_DESC, 
+      ACCESS_ADD, ACCESS_SIGN, SESSION_ID, 
+      APP_IP, CALLING_NO, MAC_NUM, 
+      CALLED_NO, START_TIME, END_TIME, 
+      CALL_TIME, IN_DISCHARGE, OUT_DISCHARGE, 
+      ALL_DISCHARGE, COUNTRY)
+    values (#{aaaLoginFtpLogId,jdbcType=VARCHAR}, #{chargeTpye,jdbcType=VARCHAR}, #{accessType,jdbcType=VARCHAR}, 
+      #{belongNet,jdbcType=VARCHAR}, #{visitNet,jdbcType=VARCHAR}, #{ticketSource,jdbcType=VARCHAR}, 
+      #{initialSource,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, #{accessDesc,jdbcType=VARCHAR}, 
+      #{accessAdd,jdbcType=VARCHAR}, #{accessSign,jdbcType=VARCHAR}, #{sessionId,jdbcType=VARCHAR}, 
+      #{appIp,jdbcType=VARCHAR}, #{callingNo,jdbcType=VARCHAR}, #{macNum,jdbcType=VARCHAR}, 
+      #{calledNo,jdbcType=VARCHAR}, #{startTime,jdbcType=VARCHAR}, #{endTime,jdbcType=VARCHAR}, 
+      #{callTime,jdbcType=DECIMAL}, #{inDischarge,jdbcType=VARCHAR}, #{outDischarge,jdbcType=VARCHAR}, 
+      #{allDischarge,jdbcType=VARCHAR}, #{country,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.springmvc.model.AaaLoginFtpLog" >
+    insert into AAA_LOGIN_FTP_LOG
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="aaaLoginFtpLogId != null" >
+        AAA_LOGIN_FTP_LOG_ID,
+      </if>
+      <if test="chargeTpye != null" >
+        CHARGE_TPYE,
+      </if>
+      <if test="accessType != null" >
+        ACCESS_TYPE,
+      </if>
+      <if test="belongNet != null" >
+        BELONG_NET,
+      </if>
+      <if test="visitNet != null" >
+        VISIT_NET,
+      </if>
+      <if test="ticketSource != null" >
+        TICKET_SOURCE,
+      </if>
+      <if test="initialSource != null" >
+        INITIAL_SOURCE,
+      </if>
+      <if test="account != null" >
+        ACCOUNT,
+      </if>
+      <if test="accessDesc != null" >
+        ACCESS_DESC,
+      </if>
+      <if test="accessAdd != null" >
+        ACCESS_ADD,
+      </if>
+      <if test="accessSign != null" >
+        ACCESS_SIGN,
+      </if>
+      <if test="sessionId != null" >
+        SESSION_ID,
+      </if>
+      <if test="appIp != null" >
+        APP_IP,
+      </if>
+      <if test="callingNo != null" >
+        CALLING_NO,
+      </if>
+      <if test="macNum != null" >
+        MAC_NUM,
+      </if>
+      <if test="calledNo != null" >
+        CALLED_NO,
+      </if>
+      <if test="startTime != null" >
+        START_TIME,
+      </if>
+      <if test="endTime != null" >
+        END_TIME,
+      </if>
+      <if test="callTime != null" >
+        CALL_TIME,
+      </if>
+      <if test="inDischarge != null" >
+        IN_DISCHARGE,
+      </if>
+      <if test="outDischarge != null" >
+        OUT_DISCHARGE,
+      </if>
+      <if test="allDischarge != null" >
+        ALL_DISCHARGE,
+      </if>
+      <if test="country != null" >
+        COUNTRY,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="aaaLoginFtpLogId != null" >
+        #{aaaLoginFtpLogId,jdbcType=VARCHAR},
+      </if>
+      <if test="chargeTpye != null" >
+        #{chargeTpye,jdbcType=VARCHAR},
+      </if>
+      <if test="accessType != null" >
+        #{accessType,jdbcType=VARCHAR},
+      </if>
+      <if test="belongNet != null" >
+        #{belongNet,jdbcType=VARCHAR},
+      </if>
+      <if test="visitNet != null" >
+        #{visitNet,jdbcType=VARCHAR},
+      </if>
+      <if test="ticketSource != null" >
+        #{ticketSource,jdbcType=VARCHAR},
+      </if>
+      <if test="initialSource != null" >
+        #{initialSource,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null" >
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="accessDesc != null" >
+        #{accessDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="accessAdd != null" >
+        #{accessAdd,jdbcType=VARCHAR},
+      </if>
+      <if test="accessSign != null" >
+        #{accessSign,jdbcType=VARCHAR},
+      </if>
+      <if test="sessionId != null" >
+        #{sessionId,jdbcType=VARCHAR},
+      </if>
+      <if test="appIp != null" >
+        #{appIp,jdbcType=VARCHAR},
+      </if>
+      <if test="callingNo != null" >
+        #{callingNo,jdbcType=VARCHAR},
+      </if>
+      <if test="macNum != null" >
+        #{macNum,jdbcType=VARCHAR},
+      </if>
+      <if test="calledNo != null" >
+        #{calledNo,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=VARCHAR},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=VARCHAR},
+      </if>
+      <if test="callTime != null" >
+        #{callTime,jdbcType=DECIMAL},
+      </if>
+      <if test="inDischarge != null" >
+        #{inDischarge,jdbcType=VARCHAR},
+      </if>
+      <if test="outDischarge != null" >
+        #{outDischarge,jdbcType=VARCHAR},
+      </if>
+      <if test="allDischarge != null" >
+        #{allDischarge,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null" >
+        #{country,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="cn.springmvc.model.AaaLoginFtpLogExample" resultType="java.lang.Integer" >
+    select count(*) from AAA_LOGIN_FTP_LOG
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update AAA_LOGIN_FTP_LOG
+    <set >
+      <if test="record.aaaLoginFtpLogId != null" >
+        AAA_LOGIN_FTP_LOG_ID = #{record.aaaLoginFtpLogId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.chargeTpye != null" >
+        CHARGE_TPYE = #{record.chargeTpye,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accessType != null" >
+        ACCESS_TYPE = #{record.accessType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.belongNet != null" >
+        BELONG_NET = #{record.belongNet,jdbcType=VARCHAR},
+      </if>
+      <if test="record.visitNet != null" >
+        VISIT_NET = #{record.visitNet,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ticketSource != null" >
+        TICKET_SOURCE = #{record.ticketSource,jdbcType=VARCHAR},
+      </if>
+      <if test="record.initialSource != null" >
+        INITIAL_SOURCE = #{record.initialSource,jdbcType=VARCHAR},
+      </if>
+      <if test="record.account != null" >
+        ACCOUNT = #{record.account,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accessDesc != null" >
+        ACCESS_DESC = #{record.accessDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accessAdd != null" >
+        ACCESS_ADD = #{record.accessAdd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accessSign != null" >
+        ACCESS_SIGN = #{record.accessSign,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sessionId != null" >
+        SESSION_ID = #{record.sessionId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.appIp != null" >
+        APP_IP = #{record.appIp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.callingNo != null" >
+        CALLING_NO = #{record.callingNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.macNum != null" >
+        MAC_NUM = #{record.macNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.calledNo != null" >
+        CALLED_NO = #{record.calledNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.startTime != null" >
+        START_TIME = #{record.startTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.endTime != null" >
+        END_TIME = #{record.endTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.callTime != null" >
+        CALL_TIME = #{record.callTime,jdbcType=DECIMAL},
+      </if>
+      <if test="record.inDischarge != null" >
+        IN_DISCHARGE = #{record.inDischarge,jdbcType=VARCHAR},
+      </if>
+      <if test="record.outDischarge != null" >
+        OUT_DISCHARGE = #{record.outDischarge,jdbcType=VARCHAR},
+      </if>
+      <if test="record.allDischarge != null" >
+        ALL_DISCHARGE = #{record.allDischarge,jdbcType=VARCHAR},
+      </if>
+      <if test="record.country != null" >
+        COUNTRY = #{record.country,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update AAA_LOGIN_FTP_LOG
+    set AAA_LOGIN_FTP_LOG_ID = #{record.aaaLoginFtpLogId,jdbcType=VARCHAR},
+      CHARGE_TPYE = #{record.chargeTpye,jdbcType=VARCHAR},
+      ACCESS_TYPE = #{record.accessType,jdbcType=VARCHAR},
+      BELONG_NET = #{record.belongNet,jdbcType=VARCHAR},
+      VISIT_NET = #{record.visitNet,jdbcType=VARCHAR},
+      TICKET_SOURCE = #{record.ticketSource,jdbcType=VARCHAR},
+      INITIAL_SOURCE = #{record.initialSource,jdbcType=VARCHAR},
+      ACCOUNT = #{record.account,jdbcType=VARCHAR},
+      ACCESS_DESC = #{record.accessDesc,jdbcType=VARCHAR},
+      ACCESS_ADD = #{record.accessAdd,jdbcType=VARCHAR},
+      ACCESS_SIGN = #{record.accessSign,jdbcType=VARCHAR},
+      SESSION_ID = #{record.sessionId,jdbcType=VARCHAR},
+      APP_IP = #{record.appIp,jdbcType=VARCHAR},
+      CALLING_NO = #{record.callingNo,jdbcType=VARCHAR},
+      MAC_NUM = #{record.macNum,jdbcType=VARCHAR},
+      CALLED_NO = #{record.calledNo,jdbcType=VARCHAR},
+      START_TIME = #{record.startTime,jdbcType=VARCHAR},
+      END_TIME = #{record.endTime,jdbcType=VARCHAR},
+      CALL_TIME = #{record.callTime,jdbcType=DECIMAL},
+      IN_DISCHARGE = #{record.inDischarge,jdbcType=VARCHAR},
+      OUT_DISCHARGE = #{record.outDischarge,jdbcType=VARCHAR},
+      ALL_DISCHARGE = #{record.allDischarge,jdbcType=VARCHAR},
+      COUNTRY = #{record.country,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.springmvc.model.AaaLoginFtpLog" >
+    update AAA_LOGIN_FTP_LOG
+    <set >
+      <if test="chargeTpye != null" >
+        CHARGE_TPYE = #{chargeTpye,jdbcType=VARCHAR},
+      </if>
+      <if test="accessType != null" >
+        ACCESS_TYPE = #{accessType,jdbcType=VARCHAR},
+      </if>
+      <if test="belongNet != null" >
+        BELONG_NET = #{belongNet,jdbcType=VARCHAR},
+      </if>
+      <if test="visitNet != null" >
+        VISIT_NET = #{visitNet,jdbcType=VARCHAR},
+      </if>
+      <if test="ticketSource != null" >
+        TICKET_SOURCE = #{ticketSource,jdbcType=VARCHAR},
+      </if>
+      <if test="initialSource != null" >
+        INITIAL_SOURCE = #{initialSource,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null" >
+        ACCOUNT = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="accessDesc != null" >
+        ACCESS_DESC = #{accessDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="accessAdd != null" >
+        ACCESS_ADD = #{accessAdd,jdbcType=VARCHAR},
+      </if>
+      <if test="accessSign != null" >
+        ACCESS_SIGN = #{accessSign,jdbcType=VARCHAR},
+      </if>
+      <if test="sessionId != null" >
+        SESSION_ID = #{sessionId,jdbcType=VARCHAR},
+      </if>
+      <if test="appIp != null" >
+        APP_IP = #{appIp,jdbcType=VARCHAR},
+      </if>
+      <if test="callingNo != null" >
+        CALLING_NO = #{callingNo,jdbcType=VARCHAR},
+      </if>
+      <if test="macNum != null" >
+        MAC_NUM = #{macNum,jdbcType=VARCHAR},
+      </if>
+      <if test="calledNo != null" >
+        CALLED_NO = #{calledNo,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        START_TIME = #{startTime,jdbcType=VARCHAR},
+      </if>
+      <if test="endTime != null" >
+        END_TIME = #{endTime,jdbcType=VARCHAR},
+      </if>
+      <if test="callTime != null" >
+        CALL_TIME = #{callTime,jdbcType=DECIMAL},
+      </if>
+      <if test="inDischarge != null" >
+        IN_DISCHARGE = #{inDischarge,jdbcType=VARCHAR},
+      </if>
+      <if test="outDischarge != null" >
+        OUT_DISCHARGE = #{outDischarge,jdbcType=VARCHAR},
+      </if>
+      <if test="allDischarge != null" >
+        ALL_DISCHARGE = #{allDischarge,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null" >
+        COUNTRY = #{country,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where AAA_LOGIN_FTP_LOG_ID = #{aaaLoginFtpLogId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.springmvc.model.AaaLoginFtpLog" >
+    update AAA_LOGIN_FTP_LOG
+    set CHARGE_TPYE = #{chargeTpye,jdbcType=VARCHAR},
+      ACCESS_TYPE = #{accessType,jdbcType=VARCHAR},
+      BELONG_NET = #{belongNet,jdbcType=VARCHAR},
+      VISIT_NET = #{visitNet,jdbcType=VARCHAR},
+      TICKET_SOURCE = #{ticketSource,jdbcType=VARCHAR},
+      INITIAL_SOURCE = #{initialSource,jdbcType=VARCHAR},
+      ACCOUNT = #{account,jdbcType=VARCHAR},
+      ACCESS_DESC = #{accessDesc,jdbcType=VARCHAR},
+      ACCESS_ADD = #{accessAdd,jdbcType=VARCHAR},
+      ACCESS_SIGN = #{accessSign,jdbcType=VARCHAR},
+      SESSION_ID = #{sessionId,jdbcType=VARCHAR},
+      APP_IP = #{appIp,jdbcType=VARCHAR},
+      CALLING_NO = #{callingNo,jdbcType=VARCHAR},
+      MAC_NUM = #{macNum,jdbcType=VARCHAR},
+      CALLED_NO = #{calledNo,jdbcType=VARCHAR},
+      START_TIME = #{startTime,jdbcType=VARCHAR},
+      END_TIME = #{endTime,jdbcType=VARCHAR},
+      CALL_TIME = #{callTime,jdbcType=DECIMAL},
+      IN_DISCHARGE = #{inDischarge,jdbcType=VARCHAR},
+      OUT_DISCHARGE = #{outDischarge,jdbcType=VARCHAR},
+      ALL_DISCHARGE = #{allDischarge,jdbcType=VARCHAR},
+      COUNTRY = #{country,jdbcType=VARCHAR}
+    where AAA_LOGIN_FTP_LOG_ID = #{aaaLoginFtpLogId,jdbcType=VARCHAR}
+  </update>
+</mapper>
