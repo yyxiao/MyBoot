@@ -16,7 +16,7 @@
     </parent>
 
     <properties>
-        <start-class>com.xyy.Application</start-class>
+        <start-class>com.com.xyy.Application</start-class>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
         <log4j.version>1.2.17</log4j.version>
@@ -55,6 +55,11 @@
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-starter-client</artifactId>
         </dependency>
     </dependencies>
 

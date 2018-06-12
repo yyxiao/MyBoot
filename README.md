@@ -40,3 +40,8 @@ security，本环境provider因为是web中集成了provider故得进行修改�
 http://127.0.0.1:8101/hystrix
 调用熔断器仪表盘 查看接口熔断情况
 http://localhost:8101/hystrix/monitor?stream=http://localhost:9000/hystrix.stream
+
+# MyBoot-admin-server(2018-06-12)
+Spring Boot Admin作为Server，其他 Spring Boot应用作为Client，Client把自身的信息“注册”到Server，
+我们就能在Server上看到“注册”的Spring Boot应用的状态信息了。
+
