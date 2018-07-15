@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: api-gateway
+  boot:
+  admin:
+    url: http://localhost:8080
+server:
+  port: 5555
+
+
+#这里的配置表示，访问/it/** 直接重定向到http://www.ityouknow.com/**
+zuul:
+  routes:
+    baidu:
+      path: /it/**
+      url: http://www.ityouknow.com/
+
+    api-b:
+      path: /myboot-service/**
+      serviceId: myboot-service
+
+#将zull注册到eureka
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1111/eureka/
+
+#要注册的服务端
+#SpringBoot 1.5以后的版本都默认开启端点保护
+management:
+  security:
+    enabled: false
