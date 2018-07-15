@@ -29,3 +29,8 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:1111/eureka/
+
+# 日志logback管理
+logback:
+  logdir: /Users/xiaoyy/data/logs/myBoot/provider
+  appname: MyBoot-provider

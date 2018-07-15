@@ -16,11 +16,6 @@
     </parent>
 
     <repositories>
-        <!--<repository>-->
-            <!--<id>nexus</id>-->
-            <!--<url>http://192.168.1.180:8081/nexus/content/repositories/thirdparty/</url>-->
-            <!--<layout>default</layout>-->
-        <!--</repository>-->
         <repository>
             <id>spring-milestone</id>
             <url>https://repo.spring.io/libs-release</url>
@@ -118,11 +113,6 @@
             <artifactId>pagehelper</artifactId>
         </dependency>
 
-        <!--Log Support-->
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-        </dependency>
     </dependencies>
 
     <dependencyManagement>

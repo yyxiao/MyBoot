@@ -3,14 +3,14 @@ package com.xyy;
 import com.alibaba.druid.pool.DruidDataSource;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.log4j.Logger;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
@@ -29,7 +29,7 @@ import java.beans.PropertyVetoException;
  * PACKAGE_NAME
  *
  * @author xiaoyy
- * 主函数，包含main函数
+ *         主函数，包含main函数
  * @Date 2017-05-17 上午10:39
  * The word 'impossible' is not in my dictionary.
  */
@@ -38,12 +38,12 @@ import java.beans.PropertyVetoException;
 @SpringBootApplication
 @ComponentScan
 @MapperScan("com.xyy.mapper")
-public class Application extends SpringBootServletInitializer{
-    private static Logger logger1 = Logger.getLogger(Application.class);
+public class Application extends SpringBootServletInitializer {
+    private static Logger logger = LoggerFactory.getLogger(Application.class);
     @Autowired
     private Environment env;
 
-    @Bean(name="dataSource")
+    @Bean(name = "dataSource")
     public DruidDataSource dataSource() throws PropertyVetoException {
         DruidDataSource dataSource = new DruidDataSource();
         dataSource.setDriverClassName(env.getProperty("db.driverClassName"));
@@ -54,6 +54,7 @@ public class Application extends SpringBootServletInitializer{
         System.out.println(a);
         return dataSource;
     }
+
     @Bean
     public SqlSessionFactory sqlSessionFactoryBean() throws Exception {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
@@ -64,7 +65,7 @@ public class Application extends SpringBootServletInitializer{
     }
 
     @Bean(name = "transactionManager")
-    public PlatformTransactionManager annotationDrivenTransactionManager() throws PropertyVetoException{
+    public PlatformTransactionManager annotationDrivenTransactionManager() throws PropertyVetoException {
         return new DataSourceTransactionManager(dataSource());
     }
 
@@ -86,18 +87,19 @@ public class Application extends SpringBootServletInitializer{
     public static void main(String[] args) {
 //        new SpringApplicationBuilder(Application.class).web(true).run(args);
         SpringApplication.run(Application.class, args);
-        logger1.info("============= SpringBoot Start Success =============");
+        logger.info("============= SpringBoot Start Success =============");
     }
 
 
     /**
      * 捕获类内所有的异常
+     *
      * @param ex
      * @return
      */
     @ExceptionHandler
-    public ModelAndView exceptionHandelByThymeleaf(Exception ex, HttpServletRequest req){
-        ModelAndView mav=new ModelAndView();
+    public ModelAndView exceptionHandelByThymeleaf(Exception ex, HttpServletRequest req) {
+        ModelAndView mav = new ModelAndView();
         mav.setViewName("error");
         mav.addObject("exception", ex);
         mav.addObject("url", req.getRequestURL());
