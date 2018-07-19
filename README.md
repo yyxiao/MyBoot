@@ -36,6 +36,7 @@ security，本环境provider因为是web中集成了provider故得进行修改�
 # MyBoot-hystrix(2018-04-02)
 熔断器监控，调用测试搭建，具体调用后期补入
 2018-04-09 加入swagger2用来构建api文档
+swagger2默认访问地址：swagger-ui.html
 
 http://127.0.0.1:8101/hystrix
 调用熔断器仪表盘 查看接口熔断情况
