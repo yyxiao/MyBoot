@@ -2,6 +2,7 @@ package com.xyy.controller;
 
 import com.xyy.entity.ComplatZone;
 import com.xyy.service.ComplatZoneService;
+import com.xyy.service.RedisService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,9 @@ public class CityController {
     @Autowired
     private ComplatZoneService complatZoneService;
 
+    @Autowired
+    private RedisService redisService;
+
     /**
      * 根据ID查询城市
      * @param id
@@ -43,6 +47,24 @@ public class CityController {
 
         r = complatZoneService.getAll();
         return r;
+    }
+
+    /**
+     * 测试redis集成
+     * @param id
+     * @return
+     */
+    @ApiOperation(value="测试redis集成", notes="测试redis集成")
+    @ApiImplicitParam(name = "id", value = "随意id", required = true, dataType = "Integer", paramType = "path")
+    @RequestMapping(value = "redis/{id}", method = RequestMethod.GET)
+    public String setRedis (@PathVariable(value = "id") Integer id){
+        System.out.println(id);
+        redisService.set("abc", "123333333");
+        redisService.set("abcb", "1233333331112333");
+        redisService.expire("abcb", Long.parseLong("60"));
+
+        String abc = redisService.get("abc");
+        return abc;
     }
 
 }
