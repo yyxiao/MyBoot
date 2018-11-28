@@ -12,6 +12,7 @@ import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
+import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 
 /**
  * RedisConfig
@@ -24,6 +25,8 @@ import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
  */
 @Configuration
 @EnableCaching
+//maxInactiveIntervalInSeconds 默认是1800秒过期，这里测试修改为60秒
+@EnableRedisHttpSession(maxInactiveIntervalInSeconds = 60)
 public class RedisConfig {
 
     @Bean
