@@ -46,3 +46,19 @@ http://localhost:8101/hystrix/monitor?stream=http://localhost:9000/hystrix.strea
 Spring Boot Admin作为Server，其他 Spring Boot应用作为Client，Client把自身的信息“注册”到Server，
 我们就能在Server上看到“注册”的Spring Boot应用的状态信息了。
 
+## 各模块端口占用表
+
+| 项目名                | 端口号 |
+| --------------------- | ------ |
+| admin-server          | 8080   |
+| config                | 8089   |
+| eureka                | 1111   |
+| hystrix               | 8101   |
+| oauth                 | 2222   |
+| parent                | 8089   |
+| provider              | 3333   |
+| zuul                  | 5555   |
+|                       |        |
+|                       |        |
+|                       |        |
+----
