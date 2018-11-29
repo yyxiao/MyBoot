@@ -4,6 +4,12 @@
 server:
   port: 1111
 
+# security权限安全控制
+#security:
+#  user:
+#    name: test
+#    password: test
+
 eureka:
   client:
     register-with-eureka: false
