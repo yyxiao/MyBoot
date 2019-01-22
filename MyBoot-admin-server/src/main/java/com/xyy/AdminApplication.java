@@ -18,15 +18,15 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableAutoConfiguration
 @EnableAdminServer
-public class Application {
-   private static Logger logger1 = Logger.getLogger(Application.class);
+public class AdminApplication {
+   private static Logger logger1 = Logger.getLogger(AdminApplication.class);
 
    /**
     * Main Start
     */
    public static void main(String[] args) {
        // 作用相同
-       new SpringApplicationBuilder(Application.class).run(args);
+       new SpringApplicationBuilder(AdminApplication.class).run(args);
        logger1.info("============= SpringBoot Start Success =============");
    }
 

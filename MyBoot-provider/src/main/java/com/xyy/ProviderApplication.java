@@ -34,12 +34,10 @@ import java.beans.PropertyVetoException;
  * The word 'impossible' is not in my dictionary.
  */
 @EnableDiscoveryClient
-@EnableAutoConfiguration
 @SpringBootApplication
-@ComponentScan
 @MapperScan("com.xyy.mapper")
-public class Application extends SpringBootServletInitializer {
-    private static Logger logger = LoggerFactory.getLogger(Application.class);
+public class ProviderApplication extends SpringBootServletInitializer {
+    private static Logger logger = LoggerFactory.getLogger(ProviderApplication.class);
     @Autowired
     private Environment env;
 
@@ -86,7 +84,7 @@ public class Application extends SpringBootServletInitializer {
      */
     public static void main(String[] args) {
 //        new SpringApplicationBuilder(Application.class).web(true).run(args);
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(ProviderApplication.class, args);
         logger.info("============= SpringBoot Start Success =============");
     }
 

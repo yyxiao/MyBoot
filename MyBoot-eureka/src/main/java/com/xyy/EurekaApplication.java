@@ -17,8 +17,8 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
  */
 @EnableEurekaServer
 @SpringBootApplication
-public class Application {
-    private static Logger logger1 = Logger.getLogger(Application.class);
+public class EurekaApplication {
+    private static Logger logger1 = Logger.getLogger(EurekaApplication.class);
 
     /**
      * Main Start
@@ -26,7 +26,7 @@ public class Application {
     public static void main(String[] args) {
         // 作用相同
 //        SpringApplication.run(Application.class, args);
-        new SpringApplicationBuilder(Application.class).web(true).run(args);
+        new SpringApplicationBuilder(EurekaApplication.class).web(true).run(args);
         logger1.info("============= SpringBoot Start Success =============");
     }
 

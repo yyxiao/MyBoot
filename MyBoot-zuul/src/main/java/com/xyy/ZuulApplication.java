@@ -16,14 +16,14 @@ import org.springframework.context.annotation.Bean;
  */
 @EnableZuulProxy
 @SpringBootApplication
-public class Application {
-   private static Logger logger = Logger.getLogger(Application.class);
+public class ZuulApplication {
+   private static Logger logger = Logger.getLogger(ZuulApplication.class);
 
    /**
     * Main Start
     */
    public static void main(String[] args) {
-       SpringApplication.run(Application.class, args);
+       SpringApplication.run(ZuulApplication.class, args);
        logger.info("============= MyBoot-zuul Start Success =============");
    }
 

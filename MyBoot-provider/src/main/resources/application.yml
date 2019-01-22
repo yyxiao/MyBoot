@@ -32,4 +32,4 @@ eureka:
 
 # 日志logback管理
 logback:
-  logdir: /Users/xiaoyy/data/logs/myBoot/provider
+  logdir: /Users/xiaoyy/logs/myBoot/provider

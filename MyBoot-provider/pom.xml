@@ -115,6 +115,7 @@
 
     </dependencies>
 
+    <!--添加spring-cloud-starter-eureka依赖-->
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -126,7 +127,6 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
 
     <build>
         <plugins>

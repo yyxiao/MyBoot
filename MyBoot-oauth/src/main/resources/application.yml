@@ -1,4 +1,9 @@
+server:
+  port: 2222
+
 spring:
+  application:
+    name: sso
   profiles:
     active: product
   datasource:
@@ -11,11 +16,12 @@ spring:
       ddl-auto: update
     show-sql: true
 
-
-server:
-  port: 2222
-
+#将sso注册到eureka
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1111/eureka/
 
 # 日志logback管理
 logback:
-  logdir: /Users/xiaoyy/data/logs/myBoot/oauth
+  logdir: /Users/xiaoyy/logs/myBoot/sso

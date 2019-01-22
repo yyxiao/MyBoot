@@ -10,17 +10,26 @@ server:
 
 #这里的配置表示，访问/it/** 直接重定向到http://www.ityouknow.com/**
 zuul:
+  prefix: /api
   routes:
     baidu:
       path: /it/**
       url: http://www.ityouknow.com/
 
-    api-b:
+    myboot-service:
       path: /myboot-service/**
-      serviceId: myboot-service
+      url: http://localhost:3333/myboot-service/
 
-#将zull注册到eureka
+    sso:
+      path: /abc/**
+      service-id: sso
+
+
 eureka:
+  instance:
+    hostname: localhost   # 指定该Eureka实例的主机名
+    prefer-ip-address: true
+  #将zull注册到eureka
   client:
     serviceUrl:
       defaultZone: http://localhost:1111/eureka/
