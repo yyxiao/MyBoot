@@ -33,9 +33,13 @@ calsspath:/public/index.html
 mybatis ORM逆向生成实体 generatorConfig.xml
 
 # MyBoot-zuul(2017-11-17)
-
-使用zuul过滤接口访问时，需去除provider中的WebSecurityConfig与pom中spring-boot-starter-security，不过建议在接口应用中不要添加
+服务代理，使用zuul过滤接口访问时，需去除provider中的WebSecurityConfig与pom中spring-boot-starter-security，不过建议在接口应用中不要添加
 security，本环境provider因为是web中集成了provider故得进行修改。
+
+~~~
+访问http://127.0.0.1:5555/api/abc/city/01?accessToken=1233
+其实代理到http://127.0.0.1:2222/sso/city/01地址
+~~~
 
 # MyBoot-parent(2018-03-28)
 使用maven管控所有子项目引用版本
@@ -57,6 +61,10 @@ Spring Boot Admin作为Server，其他 Spring Boot应用作为Client，Client把
 Spring Boot Admin配置管理工具包，让你可以把配置放到远程服务器，集中化管理集群配置，支持本地存储、Git以及SVN，
 demo中为git配置。
 
+# MyBoot-nacos(2019-01-11)
+使用阿里nacos做服务注册中心，该版本使用0.7，暂时nacos不是很稳定不建议使用。
+
+
 ## 各模块端口占用表
 
 | 项目名                | 端口号 |
@@ -69,7 +77,7 @@ demo中为git配置。
 | parent                | 8089   |
 | provider              | 3333   |
 | zuul                  | 5555   |
-|                       |        |
+| nacos                 | 8003   |
 |                       |        |
 |                       |        |
 ----
