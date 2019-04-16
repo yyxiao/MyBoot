@@ -64,6 +64,11 @@ demo中为git配置。
 # MyBoot-nacos(2019-01-11)
 使用阿里nacos做服务注册中心，该版本使用0.7，暂时nacos不是很稳定不建议使用。
 
+# MyBoot-oauth(2019-02-20)
+* 集成redis做session管理
+* 集成flyway做数据库版本管理
+* 集成JPA做数据库ORM框架
+
 
 ## 各模块端口占用表
 
@@ -80,4 +85,4 @@ demo中为git配置。
 | nacos                 | 8003   |
 |                       |        |
 |                       |        |
-----
+--------

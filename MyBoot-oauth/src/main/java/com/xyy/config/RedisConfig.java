@@ -83,4 +83,8 @@ public class RedisConfig {
         template.afterPropertiesSet();
         return template;
     }
+
+    public static void main(String[] args) {
+        System.out.println("0.00".equals("0"));
+    }
 }
