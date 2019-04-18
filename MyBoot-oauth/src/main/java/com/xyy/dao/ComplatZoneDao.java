@@ -13,6 +13,6 @@ import org.springframework.data.repository.PagingAndSortingRepository;
  * @Date 2018-07-19 下午4:41
  * The word 'impossible' is not in my dictionary.
  */
-public interface ComplatZoneDao extends PagingAndSortingRepository<ComplatZone, Integer>, JpaSpecificationExecutor<ComplatZone>{
+public interface ComplatZoneDao extends PagingAndSortingRepository<ComplatZone, String>, JpaSpecificationExecutor<ComplatZone>{
 
 }

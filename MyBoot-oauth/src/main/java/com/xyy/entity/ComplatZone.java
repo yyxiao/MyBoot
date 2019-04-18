@@ -4,6 +4,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Title: ComplatZone.java 
@@ -105,5 +106,4 @@ public class ComplatZone implements Serializable {
 	public void setType(Integer type) {
 		this.type = type;
 	}
-
 }

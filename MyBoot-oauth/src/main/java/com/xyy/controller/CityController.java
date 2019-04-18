@@ -1,6 +1,8 @@
 package com.xyy.controller;
 
+import com.xyy.entity.ComplatCity;
 import com.xyy.entity.ComplatZone;
+import com.xyy.service.CityService;
 import com.xyy.service.ComplatZoneService;
 import com.xyy.service.RedisService;
 import io.swagger.annotations.ApiImplicitParam;
@@ -29,19 +31,21 @@ public class CityController {
 
     @Autowired
     private ComplatZoneService complatZoneService;
-
+    @Autowired
+    private CityService cityService;
     @Autowired
     private RedisService redisService;
 
     /**
      * 根据ID查询城市
+     *
      * @param id
      * @return
      */
-    @ApiOperation(value="获取城市详细信息", notes="根据url的id来获取城市详细信息")
+    @ApiOperation(value = "获取城市详细信息", notes = "根据url的id来获取城市详细信息")
     @ApiImplicitParam(name = "id", value = "城市ID", required = true, dataType = "Integer", paramType = "path")
     @RequestMapping(value = "city/{id}", method = RequestMethod.GET)
-    public List<ComplatZone> getUserById (@PathVariable(value = "id") Integer id){
+    public List<ComplatZone> getUserById(@PathVariable(value = "id") Integer id) {
         System.out.println(id);
         List<ComplatZone> r = new ArrayList<ComplatZone>();
 
@@ -51,13 +55,14 @@ public class CityController {
 
     /**
      * 测试redis集成
+     *
      * @param id
      * @return
      */
-    @ApiOperation(value="测试redis集成", notes="测试redis集成")
+    @ApiOperation(value = "测试redis集成", notes = "测试redis集成")
     @ApiImplicitParam(name = "id", value = "随意id", required = true, dataType = "Integer", paramType = "path")
     @RequestMapping(value = "redis/{id}", method = RequestMethod.GET)
-    public String setRedis (@PathVariable(value = "id") Integer id){
+    public String setRedis(@PathVariable(value = "id") Integer id) {
         System.out.println(id);
         redisService.set("abc", "123333333");
         redisService.set("abcb", "1233333331112333");
@@ -65,6 +70,22 @@ public class CityController {
 
         String abc = redisService.get("abc");
         return abc;
+    }
+
+    /**
+     * 根据ID查询城市
+     *
+     * @param id
+     * @return
+     */
+    @ApiOperation(value = "获取城市详细信息", notes = "根据url的id来获取城市详细信息")
+    @ApiImplicitParam(name = "id", value = "城市ID", required = true, dataType = "Integer", paramType = "path")
+    @RequestMapping(value = "citys/{id}", method = RequestMethod.GET)
+    public ComplatCity getCityById(@PathVariable(value = "id") Integer id) {
+        System.out.println(id);
+        ComplatCity r = new ComplatCity();
+        r = cityService.getCity();
+        return r;
     }
 
 }
