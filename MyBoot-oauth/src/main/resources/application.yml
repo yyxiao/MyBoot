@@ -10,13 +10,13 @@ spring:
     primary:
       driver-class-name: com.mysql.jdbc.Driver
       jdbc-url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
-      username: root
-      password: root
+      username: ENC(jVZrQOdk0NCBP7YaTIZTcQ==)
+      password: ENC(l1ys5g+qWU7L6eLNrSOJ2g==)
     secondary:
       driver-class-name: com.mysql.jdbc.Driver
       jdbc-url: jdbc:mysql://localhost:3306/ldap?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
-      username: root
-      password: root
+      username: ENC(jVZrQOdk0NCBP7YaTIZTcQ==)
+      password: ENC(l1ys5g+qWU7L6eLNrSOJ2g==)
   jpa:
     hibernate:
       ddl-auto: update
@@ -32,6 +32,10 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:1111/eureka/
+#配置文件加密秘钥
+jasypt:
+  encryptor:
+    password: xander@082445L
 
 # 日志logback管理
 logback:

@@ -21,6 +21,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <springframework.boot.version>1.5.8.RELEASE</springframework.boot.version>
         <spring.jdbc.version>5.0.0.RELEASE</spring.jdbc.version>
+        <springboot.eureka.version>1.4.7.RELEASE</springboot.eureka.version>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
         <mybatis.version>3.2.7</mybatis.version>
@@ -40,6 +41,7 @@
         <java.version>1.8</java.version>
         <druid.version>1.1.6</druid.version>
         <flyway.version>5.2.4</flyway.version>
+        <jasypt.version>2.1.0</jasypt.version>
     </properties>
 
     <dependencyManagement>
@@ -124,6 +126,17 @@
             </dependency>
 
             <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-eureka</artifactId>
+                <version>${springboot.eureka.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-eureka-server</artifactId>
+                <version>${springboot.eureka.version}</version>
+            </dependency>
+
+            <dependency>
                 <groupId>de.codecentric</groupId>
                 <artifactId>spring-boot-admin-server-ui</artifactId>
                 <version>${springboot-admin.version}</version>
@@ -143,6 +156,12 @@
                 <groupId>org.flywaydb</groupId>
                 <artifactId>flyway-core</artifactId>
                 <version>${flyway.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.ulisesbocchio</groupId>
+                <artifactId>jasypt-spring-boot-starter</artifactId>
+                <version>${jasypt.version}</version>
             </dependency>
 
         </dependencies>

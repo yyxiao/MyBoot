@@ -2,7 +2,6 @@ package com.xyy;
 
 import org.apache.log4j.Logger;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
@@ -25,8 +24,8 @@ public class EurekaApplication {
      */
     public static void main(String[] args) {
         // 作用相同
-//        SpringApplication.run(Application.class, args);
-        new SpringApplicationBuilder(EurekaApplication.class).web(true).run(args);
+        SpringApplication.run(EurekaApplication.class, args);
+//        new SpringApplicationBuilder(EurekaApplication.class).web(true).run(args);
         logger1.info("============= SpringBoot Start Success =============");
     }
 
