@@ -15,15 +15,12 @@ zuul:
     baidu:
       path: /it/**
       url: http://www.ityouknow.com/
-
     myboot-service:
       path: /myboot-service/**
       url: http://localhost:3333/myboot-service/
-
     sso:
       path: /abc/**
       service-id: sso
-
 
 eureka:
   instance:
