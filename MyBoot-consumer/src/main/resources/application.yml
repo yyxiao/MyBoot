@@ -1,0 +1,13 @@
+server:
+  port: 4333
+
+spring:
+  application:
+    name: consumer
+#将consumer注册到eureka
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://test:test@localhost:1111/eureka/
+#  instance:
+#    prefer-ip-address: true

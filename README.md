@@ -69,6 +69,9 @@ demo中为git配置。
 * 集成flyway做数据库版本管理
 * 集成JPA做数据库ORM框架，实现多表关联查询
 
+# MyBoot-consumer&MyBoot-ribbon(2019-06-26)
+* 集成ribbon，学习实现负载均衡
+* consumer启动多个，ribbon调用时轮询相关接口
 
 ## 各模块端口占用表
 
@@ -83,6 +86,10 @@ demo中为git配置。
 | provider              | 3333   |
 | zuul                  | 5555   |
 | nacos                 | 8003   |
+| consumer              | 4444/4333 |
+| ribbon                | 4332   |
+|                       |        |
+|                       |        |
 |                       |        |
 |                       |        |
 --------

@@ -7,6 +7,8 @@ server:
 # security权限安全控制
 spring:
   security:
+    basic:
+      enabled: true
     user:
       name: test
       password: test
@@ -18,4 +20,6 @@ eureka:
     register-with-eureka: false
     fetch-registry: false
     serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+      defaultZone: http://localhost:1111/eureka/
+  server:
+    enableSelfPreservation: false

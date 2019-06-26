@@ -26,12 +26,11 @@ spring:
     locations: classpath:db/migration
     baseline-on-migrate: true
 
-
 #将sso注册到eureka
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:1111/eureka/
+      defaultZone: http://test:test@localhost:1111/eureka/
 #配置文件加密秘钥
 jasypt:
   encryptor:
