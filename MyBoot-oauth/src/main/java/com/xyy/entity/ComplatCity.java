@@ -50,7 +50,7 @@ public class ComplatCity implements Serializable {
 
     //标识other为complat_city中字段，对应complat_zone中iid
     @OneToOne(targetEntity = ComplatZone.class)
-    @JoinColumn(name = "other", referencedColumnName = "iid", foreignKey = @ForeignKey(name = "null"))
+    @JoinColumn(name = "other", referencedColumnName = "iid", foreignKey = @ForeignKey(name = "CITY_TO_ZONE_FK"))
     public ComplatZone getComplatZone() {
         return complatZone;
     }

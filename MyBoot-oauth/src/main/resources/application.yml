@@ -39,3 +39,7 @@ jasypt:
 # 日志logback管理
 logback:
   logdir: /Users/xiaoyy/logs/myBoot/sso
+
+# netty监听端口
+netty:
+  port: 11111

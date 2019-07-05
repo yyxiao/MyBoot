@@ -19,6 +19,7 @@
 build
 target/
 out/
+logdir_IS_UNDEFINED/
 bin
 
 # Operating System Files
