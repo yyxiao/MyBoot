@@ -64,7 +64,7 @@ public class ServerListener {
 	/**
 	 * 开启及服务线程
 	 */
-	@PostConstruct
+//	@PostConstruct
 	public void start() {
 		// 从配置文件中(application.yml)获取服务端监听端口号
 		int port = nettyConfig.getPort();
@@ -81,20 +81,18 @@ public class ServerListener {
 		bootstrap.childHandler(new ChannelInitializer<SocketChannel>() {
 					@Override
 					protected void initChannel(SocketChannel sc) throws Exception {
-						// 增加任务处理
-						ChannelPipeline pipeline = sc.pipeline();
-						pipeline.addLast(
+				// 增加任务处理
+				ChannelPipeline pipeline = sc.pipeline();
+				pipeline.addLast(
 //										//使用了netty自带的编码器和解码器
 //										new StringDecoder(Charset.forName("utf-8")),
 //										new StringEncoder(Charset.forName("utf-8")),
-								new MessageDecoder(),
-								new MessageEncoder());
-						//自定义的处理器
-						pipeline.addLast(new ServerHandler());
-					}
-				});
-
-
+						new MessageDecoder(),
+						new MessageEncoder());
+				//自定义的处理器
+				pipeline.addLast(new ServerHandler());
+			}
+		});
 		try {
 			//绑定端口，同步等待成功
 			ChannelFuture future = bootstrap.bind(port).sync();
