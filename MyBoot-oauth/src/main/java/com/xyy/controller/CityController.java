@@ -6,13 +6,14 @@ import com.xyy.service.CityService;
 import com.xyy.service.ComplatZoneService;
 import com.xyy.service.RedisService;
 import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.jasypt.util.text.BasicTextEncryptor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +30,10 @@ import java.util.List;
 
 @RestController
 public class CityController {
+    private static final Logger logger = LoggerFactory.getLogger(CityController.class);
 
+    @Autowired
+    private RedisTemplate<String, String> redisTemplate;
     @Autowired
     private ComplatZoneService complatZoneService;
     @Autowired
@@ -55,7 +59,49 @@ public class CityController {
     }
 
     /**
-     * 测试redis集成
+     * 根据ID查询城市
+     *
+     * @param id
+     * @return
+     */
+    @ApiOperation(value = "获取城市详细信息", notes = "根据url的id来获取城市详细信息")
+    @ApiImplicitParam(name = "id", value = "城市ID", required = true, dataType = "Integer", paramType = "path")
+    @RequestMapping(value = "citys/{id}", method = RequestMethod.GET)
+    public ComplatCity getCityById(@PathVariable(value = "id") Integer id) {
+        System.out.println(id);
+        ComplatCity r = new ComplatCity();
+        r = cityService.getCity();
+        return r;
+    }
+
+
+    /**
+     * @Description 测试redis集成template
+     * @author Xander
+     * @param id
+     * @param val
+     * @Date 2019-07-08 14:45
+     * @see com.xyy.controller
+     * The word 'impossible' is not in my dictionary.
+     */
+    @ApiOperation(value = "测试redisTemplate", notes = "测试redisTemplate")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "id", value = "主键", required = true, dataType = "String", paramType = "query"),
+            @ApiImplicitParam(name = "val", value = "值", required = true, dataType = "String", paramType = "query")
+    })
+    @RequestMapping(value = "setParamsToRedis", method = RequestMethod.GET)
+    public String setParamsToRedis(@RequestParam(value = "id")String id,
+                                   @RequestParam(value = "val")String val) {
+        logger.info("id:" + id);
+        logger.info("val:" + val);
+        redisTemplate.opsForValue().set(id, val);
+
+        String str = redisTemplate.opsForValue().get(id);
+        return str;
+    }
+
+    /**
+     * 测试redis集成Service
      *
      * @param id
      * @return
@@ -71,22 +117,6 @@ public class CityController {
 
         String abc = redisService.get("abc");
         return abc;
-    }
-
-    /**
-     * 根据ID查询城市
-     *
-     * @param id
-     * @return
-     */
-    @ApiOperation(value = "获取城市详细信息", notes = "根据url的id来获取城市详细信息")
-    @ApiImplicitParam(name = "id", value = "城市ID", required = true, dataType = "Integer", paramType = "path")
-    @RequestMapping(value = "citys/{id}", method = RequestMethod.GET)
-    public ComplatCity getCityById(@PathVariable(value = "id") Integer id) {
-        System.out.println(id);
-        ComplatCity r = new ComplatCity();
-        r = cityService.getCity();
-        return r;
     }
 
     public static void main(String[] args) {
